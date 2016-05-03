@@ -7,14 +7,15 @@ using System.Web;
 
 public class DataAccess
 {
-
     public Spec userSpec = new Spec();
+    //string connectionString = "Data Source=h2yopgjbc9.database.windows.net;Initial Catalog=MatchMakerV1804;User Id=adeministrator;Password=!907fener Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
     string connectionString = "Data Source=DESKTOP-IEDUPGS\\DEV01;Initial Catalog=MatchMaker;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
     SqlConnection connection;
 
     public DataAccess()
     {
         OpenConnection(connectionString);
+
     }
 
     private bool OpenConnection(string pConnString)
@@ -66,7 +67,6 @@ public class DataAccess
             var userHairType = rdr.GetValue(rdr.GetOrdinal("hairType"));
             var userHairColor = rdr.GetValue(rdr.GetOrdinal("hairColor"));
             var userWeight = rdr.GetValue(rdr.GetOrdinal("weight"));
-            //var userWeight = rdr.GetValue(rdr.GetInt16("weight"));
             var userPlace = rdr.GetValue(rdr.GetOrdinal("place"));
             var userSmoking = rdr.GetValue(rdr.GetOrdinal("smokingHabit"));
 
@@ -84,7 +84,6 @@ public class DataAccess
             userSpec.HairType = Convert.ToString(userHairType);
             userSpec.HairColor = Convert.ToString(userHairColor);
             userSpec.weight = Convert.ToInt32(userWeight);
-            //userSpec.weight = Convert.ToString(userWeight);
             userSpec.Place = Convert.ToString(userPlace);
             userSpec.Smoking = Convert.ToString(userSmoking);
         }
@@ -114,9 +113,7 @@ public class DataAccess
         command.Parameters.AddWithValue("@ShortInfo", ShortInfo);
         command.Parameters.AddWithValue("@HairType", HairType);
         command.Parameters.AddWithValue("@HairColor", HairColor);
-        //command.Parameters.AddWithValue("@Weight", userSpec.weight) ;
         command.Parameters.AddWithValue("@Weight", Weight);
-        //command.Parameters.Add(Weight);
         command.Parameters.AddWithValue("@Place", Place);
         command.Parameters.AddWithValue("@SmokingHabit", SmokingHabit);
         command.ExecuteNonQuery();

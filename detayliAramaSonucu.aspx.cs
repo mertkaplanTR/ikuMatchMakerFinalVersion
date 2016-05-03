@@ -59,13 +59,13 @@ public partial class detayliAramaSonucu : System.Web.UI.Page
         string chkHairC = "";
         string chkEye = "";
 
-        chkSex = sex.SelectedItem.Text;
-        chkCampus = campus.SelectedItem.Text;
-        chkDep = bolum.SelectedItem.Text;
-        chkHair = sacTipi.SelectedItem.Text;
-        chkHairC = sacRengi.SelectedItem.Text;
-        chkEye = gozRengi.SelectedItem.Text;
-
+        
+        chkSex = ddlSex.SelectedItem.Text;
+        chkCampus = ddlCampus.SelectedItem.Text;
+        chkDep = ddlDepartment.SelectedItem.Text;
+        chkHair = ddlHairType.SelectedItem.Text;
+        chkHairC = ddlHairColor.SelectedItem.Text;
+        chkEye = ddlEyeColor.SelectedItem.Text;
 
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString);
         con.Open();

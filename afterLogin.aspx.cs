@@ -79,17 +79,17 @@ public partial class afterLogin : System.Web.UI.Page
         con.Open();
         //SECURILEY SOLVED THIS  
         
-        string sql = "SELECT [name] FROM [MatchMaker].[user].[Info] where userID=@userID";
+        string sql = "SELECT [name] FROM [user].[Info] where userID=@userID";
         SqlCommand getName = new SqlCommand(sql,con);
         getName.Parameters.AddWithValue("userID", sonuc.Text);
         isim.Text = getName.ExecuteScalar().ToString();
 
-        string sql2 = "SELECT [surname] FROM [MatchMaker].[user].[Info] where userID=@userID";
+        string sql2 = "SELECT [surname] FROM [user].[Info] where userID=@userID";
         SqlCommand getSurname = new SqlCommand(sql2, con);
         getSurname.Parameters.AddWithValue("userID", sonuc.Text);
         soyadi.Text = getSurname.ExecuteScalar().ToString();
 
-        string sql3 = "SELECT [mailAddress] FROM [MatchMaker].[user].[Info] where userID=@userID";
+        string sql3 = "SELECT [mailAddress] FROM [user].[Info] where userID=@userID";
         SqlCommand getEmail = new SqlCommand(sql3, con);
         getEmail.Parameters.AddWithValue("userID", sonuc.Text);
         email.Text = getEmail.ExecuteScalar().ToString();

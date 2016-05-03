@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -18,7 +19,8 @@ public partial class begenenKisiler : System.Web.UI.Page
             sonuc.Text = Session["isim"].ToString();
 
         }
-        getInfo();
+        //getInfo();
+        BegenenKisiler();
     }
 
     void getInfo()
@@ -29,22 +31,33 @@ public partial class begenenKisiler : System.Web.UI.Page
         string sql = "SELECT [name] FROM [MatchMaker].[user].[Info] where userID=@userID";
         SqlCommand getName = new SqlCommand(sql, con);
         getName.Parameters.AddWithValue("userID", sonuc.Text);
-        begenenKisiAdi.Text = getName.ExecuteScalar().ToString();
+        //begenenKisiAdi.Text = getName.ExecuteScalar().ToString();
 
         string sql2 = "select campus FROM [MatchMaker].[user].[Info] where userID=@userID";
         SqlCommand getCampus = new SqlCommand(sql2, con);
         getCampus.Parameters.AddWithValue("userID", sonuc.Text);
-        campus.Text = getCampus.ExecuteScalar().ToString();
+        //campus.Text = getCampus.ExecuteScalar().ToString();
 
         string sql3 = "select department FROM [MatchMaker].[user].[Info] where userID=@userID";
         SqlCommand getDepartment = new SqlCommand(sql3, con);
         getDepartment.Parameters.AddWithValue("userID", sonuc.Text);
-        department.Text = getDepartment.ExecuteScalar().ToString();
+        //department.Text = getDepartment.ExecuteScalar().ToString();
+    }
 
+    public void BegenenKisiler()
+    {
 
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString);
+        con.Open();
 
+        DataTable dtBegenen = new DataTable();
 
+        string sql = "select distinct [name],[surname] from [user].[Info] as UI join [system].[Likes] as SL on SL.person1 = UI.userID where SL.person2 = @userID";
+        SqlCommand cmd = new SqlCommand(sql, con);
+        cmd.Parameters.AddWithValue("userID", sonuc.Text);
+        cmd.ExecuteScalar().ToString();
 
-
+        
+        con.Close();
     }
 }

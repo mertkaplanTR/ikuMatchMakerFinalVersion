@@ -114,7 +114,11 @@
                 <asp:CommandField ShowSelectButton="True" ButtonType="Button" SelectText="Profile Git" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:dbconnection %>" SelectCommand="select u.name,u.surname from [user].[Info] as u inner join [system].[Likes] as t on t.person1=u.userID WHERE t.isOpen=0 and t.person2=1"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:dbconnection %>" SelectCommand="select u.name,u.surname from [user].[Info] as u inner join [system].[Likes] as t on t.person1=u.userID WHERE t.isOpen=0 and t.person2=@userID">
+            <SelectParameters>
+                <asp:SessionParameter Name="userID" SessionField="isim" />
+            </SelectParameters>
+                 </asp:SqlDataSource>
                  <asp:Button ID="okudum" runat="server" Text="okudum" OnClick="Button1_Click" />
              
              
@@ -128,7 +132,11 @@
                          <asp:BoundField DataField="surname" HeaderText="surname" SortExpression="surname" />
                      </Columns>
                  </asp:GridView>
-                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:dbconnection %>" SelectCommand="select u.name,u.surname from [user].[Info] as u inner join [system].[Likes] as t on t.person1=u.userID WHERE t.isOpen=1 and t.person2=1"></asp:SqlDataSource>
+                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:dbconnection %>" SelectCommand="select u.name,u.surname from [user].[Info] as u inner join [system].[Likes] as t on t.person1=u.userID WHERE t.isOpen=1 and t.person2=@userID">
+                     <SelectParameters>
+                         <asp:SessionParameter Name="userID" SessionField="isim" />
+                     </SelectParameters>
+                 </asp:SqlDataSource>
                  <br />
              
              

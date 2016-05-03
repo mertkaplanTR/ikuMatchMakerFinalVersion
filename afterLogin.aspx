@@ -176,10 +176,24 @@
                          </div>     
 		</div>
 	    <div class="row screenshots"> <center><h3>Fotograflarım:</h3></center>
+             <br />
+                <asp:GridView ID="gvPhotos" runat="server" AutoGenerateColumns="False" DataKeyNames="pictureID" DataSourceID="getPhotosDS" HorizontalAlign="Center">
+                    <Columns>
+                        <asp:BoundField DataField="pictureID" HeaderText="pictureID" InsertVisible="False" ReadOnly="True" SortExpression="pictureID" />
+                        <asp:BoundField DataField="path" HeaderText="path" SortExpression="path" />
+                    </Columns>
+            </asp:GridView>
+            <asp:SqlDataSource ID="getPhotosDS" runat="server" ConnectionString="<%$ ConnectionStrings:dbconnection %>" SelectCommand="select [pictureID],[path] from [system].[Picture] as SP join [user].[Info] as UI on SP.userID=UI.userID where SP.userID = @userID">
+                <SelectParameters>
+                    <asp:SessionParameter Name="userID" SessionField="userID" />
+                </SelectParameters>
+            </asp:SqlDataSource>
                 <br />
 			<div id="screenshots" class="owl-carousel">
 				<!-- /.screenshot images -->
-				<div class="screen wow fadeInUp">
+				<%-- ESKİ STATİC RESİMLER
+                    
+                    <div class="screen wow fadeInUp">
 					<a href="images/aa.jpg" data-toggle="lightbox"><img src="images/aa.jpg" alt="Screenshot"></a>
 				</div>
 				
@@ -194,7 +208,7 @@
 				<div class="screen wow fadeInUp" data-wow-delay="0.3s">
 					<a href="images/aa.jpg" data-toggle="lightbox"><img src="images/aa.jpg" alt="Screenshot"></a>
 				</div>
-				
+				--%>
                 
 
 			

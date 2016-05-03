@@ -49,151 +49,39 @@
 		<div class="text-center">
 		
 			<!-- /.pricing title -->
-			<h2 class="wow fadeInLeft">Beni Begenen Kisiler</h2>
+			<h2 class="wow fadeInLeft">Beğendiğim Kisiler</h2>
 			<div class="title-line wow fadeInRight"></div>
 		</div>
 		<div class="row package-option">
 
-			<!-- /.package 1 -->
-			<div class="col-sm-3">
-			  <div class="price-box wow fadeInUp">
-			   <div class="price-heading text-center">
-			   
-			   <!-- /.package icon -->
-					<i class="pe-7s-radio pe-5x"></i>
 					
 					<!-- /.package name -->
-                   <h3><asp:Label ID="begenenKisiAdi" runat="server"></asp:Label></h3>
+                   <h3>
+                       <asp:GridView ID="gvBegenilen" runat="server" AutoGenerateColumns="False" DataSourceID="benimBegendiklerim" GridLines="Horizontal" HorizontalAlign="Left">
+                           <Columns>
+                               <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
+                               <asp:BoundField DataField="surname" HeaderText="surname" SortExpression="surname" />
+                           </Columns>
+                       </asp:GridView>
+                       <asp:SqlDataSource ID="benimBegendiklerim" runat="server" ConnectionString="<%$ ConnectionStrings:dbconnection %>" SelectCommand="select distinct [name],[surname] from [user].[Info] as UI join [system].[Likes] as SL on SL.person2=UI.userID where SL.person1=@userID">
+                           <SelectParameters>
+                               <asp:SessionParameter Name="userID" SessionField="isim" />
+                           </SelectParameters>
+                       </asp:SqlDataSource>
+                   </h3>
+                   <h3>&nbsp;</h3>
+          
 			   </div>
 			   
 			   <!-- /.price -->
-				<div class="price-group text-center">
-                    <img src="images/adembavas.jpg" />
-				</div>
+			
 			
 				<!-- /.package features -->
-			   <ul class="price-feature text-center">
-				  <li><strong>Kampus:</strong> Atakoy Kampusu</li>
-				  <li><strong>Bolum:</strong> CSE</li>
-				  <li><strong>Yasi:</strong> 23</li>
-				  <li><strong>Sehir:</strong>Istanbul</li>
-				  				  
-			   </ul>
 			   
-			   <!-- /.package button -->
-			   <div class="price-footer text-center">
-				 <a class="btn btn-price" href="#">Kullanıcıyı Incele</a>
-				</div>	
-			  </div>
-			</div>
-			
-			<!-- /.package 2 -->
-			<div class="col-sm-3">
-			  <div class="price-box wow fadeInUp" data-wow-delay="0.2s">
-			   <div class="price-heading text-center">
-
-			   <!-- /.package icon -->
-				<i class="pe-7s-joy pe-5x"></i>
-
-			   <!-- /.package name -->
-				<h3>Standard</h3>
-			   </div>
-			   
-			   <!-- /.price -->
-				<div class="price-group text-center">
-					<span class="dollar">$</span>
-					<span class="price">19</span>
-					<span class="time">/mo</span>
-				</div>
-			
-				<!-- /.package features -->
-			   <ul class="price-feature text-center">
-				  <li><strong>300MB</strong> Disk Space</li>
-				  <li><strong>400MB</strong> Bandwidth</li>
-				  <li><strong>5</strong> Subdomains</li>
-				  <li><strong>10</strong> Email Accounts</li>
-				  <li><strike>Webmail Support</strike></li>			  
-			   </ul>
-
-				<!-- /.package button -->
-			   <div class="price-footer text-center">
-				 <a class="btn btn-price" href="#">BUY NOW</a>
-				</div>
-			  </div>
-			</div>	
-			
-			<!-- /.package 3 -->
-			<div class="col-sm-3">
-			  <div class="price-box wow fadeInUp" data-wow-delay="0.4s">
-			   <div class="price-heading text-center">
-			   
-					<!-- /.package icon -->
-					<i class="pe-7s-science pe-5x"></i>
-				
-					<!-- /.package name -->
-					<h3>Advance</h3>
-			   </div>
-			   
-			   <!-- /.price -->
-				<div class="price-group text-center">
-					<span class="dollar">$</span>
-					<span class="price">29</span>
-					<span class="time">/mo</span>
-				</div>
-			
-				<!-- /.package features -->
-			   <ul class="price-feature text-center">
-				  <li><strong>1GB</strong> Disk Space</li>
-				  <li><strong>1GB</strong> Bandwidth</li>
-				  <li><strong>10</strong> Subdomains</li>
-				  <li><strong>25</strong> Email Accounts</li>
-				  <li>Webmail Support</li>					  
-			   </ul>
-			   
-			   <!-- /.package button -->
-			   <div class="price-footer text-center">
-				 <a class="btn btn-price" href="#">BUY NOW</a>
-				</div>	
-			  </div>
-			</div>
-			
-			<!-- /.package 4 -->
-			<div class="col-sm-3">
-			  <div class="price-box wow fadeInUp" data-wow-delay="0.6s">
-			   <div class="price-heading text-center">
-			   
-					<!-- /.package icon -->
-					<i class="pe-7s-tools pe-5x"></i>
-					
-					<!-- /.package name -->
-					<h3>Ultimate</h3>
-			   </div>
-			   
-			   <!-- /.price -->
-				<div class="price-group text-center">
-					<span class="dollar">$</span>
-					<span class="price">49</span>
-					<span class="time">/mo</span>
-				</div>
-			
-				<!-- /.package features -->
-			   <ul class="price-feature text-center">
-				  <li><strong>5GB</strong> Disk Space</li>
-				  <li><strong>5GB</strong> Bandwidth</li>
-				  <li><strong>50</strong> Subdomains</li>
-				  <li><strong>50</strong> Email Accounts</li>
-				  <li>Webmail Support</li>			  
-			   </ul>
-			   
-			   <!-- /.package button -->
-			   <div class="price-footer text-center">
-				 <a class="btn btn-price" href="#">BUY NOW</a>
-				</div>
-			  </div>
-			</div>
+			  
 
 		</div>
-	</div>
+	
 </div>
     </form>
 </body>

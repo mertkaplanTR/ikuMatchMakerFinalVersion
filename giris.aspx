@@ -44,7 +44,7 @@
 
                     <!-- /.main title -->
                     <h2 class="wow fadeInUp" style="margin-bottom: 50px">
-                        GIRIS YAP | SIFRE SIFIRLA
+                        GIRIS YAP | UYE OL
                     </h2>
 
                 </div>

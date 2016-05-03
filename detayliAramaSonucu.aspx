@@ -48,48 +48,85 @@
 <div class="col-sm-2">
         <h3>Detaylı Arama</h3>
         <br />
-         Cinsiyet:
-         <br />
-         <asp:DropDownList ID="sex" runat="server">
-             <asp:ListItem>Erkek</asp:ListItem>
-             <asp:ListItem>Kadın</asp:ListItem>
-         </asp:DropDownList>
-         <br /><br />
-         Kampus:<br />
-         <asp:DropDownList ID="campus" runat="server">
-             <asp:ListItem Value="0">Atakoy</asp:ListItem>
-             <asp:ListItem Value="1">Hukuk</asp:ListItem>
-             <asp:ListItem Value="2">Hazırlık</asp:ListItem>
-             <asp:ListItem Value="3">MYO</asp:ListItem>
-         </asp:DropDownList><br /><br />
-         Bolum:<br />
-         <asp:DropDownList ID="bolum" runat="server">
-             <asp:ListItem>Mimarlik</asp:ListItem>
-              <asp:ListItem>Muhendislik</asp:ListItem>
-             <asp:ListItem>Iktisat - Isletme</asp:ListItem>
-         </asp:DropDownList><br /><br />
+         
+    <asp:Label ID="Label13" runat="server" Font-Size="18px" ForeColor="Black" Text="Cinsiyet"></asp:Label>
+                            <br />
+    <asp:DropDownList ID="ddlSex" runat="server" required class="btn btn-primary dropdown-toggle" >
+                        <asp:ListItem>Kadın</asp:ListItem>
+                        <asp:ListItem>Erkek</asp:ListItem>
+                    </asp:DropDownList>
+    <br />
 
-         Sac Tipi:<br />
-         <asp:DropDownList ID="sacTipi" runat="server">
-              <asp:ListItem>Duz</asp:ListItem>
-             <asp:ListItem>Dalgali</asp:ListItem>
-             <asp:ListItem>Kivircik</asp:ListItem>
-         </asp:DropDownList><br /><br />
+    <asp:Label ID="Label8" runat="server" Font-Size="18px" ForeColor="Black" Text="Kampüs"></asp:Label>
+                            <br />
+                            
+                        <asp:DropDownList ID="ddlCampus" runat="server" class="btn btn-primary dropdown-toggle" >
+                        <asp:ListItem>Ataköy</asp:ListItem>
+                        <asp:ListItem>Şirinevler</asp:ListItem>
+                        <asp:ListItem>İncirli</asp:ListItem>
+                    </asp:DropDownList>
+                            
+                            <br />
 
-         Sac Rengi:<br />
-         <asp:DropDownList ID="sacRengi" runat="server">
-             <asp:ListItem>Siyah</asp:ListItem>
-              <asp:ListItem>Sari</asp:ListItem>
-             <asp:ListItem>Kahve Rengi</asp:ListItem>
-         </asp:DropDownList><br /><br />
+    <asp:Label ID="Label11" runat="server"  Font-Size="18px" ForeColor="Black" Text="Bölüm"></asp:Label>
+                        <br />
+                        
+                        
+                    <asp:DropDownList ID="ddlDepartment" runat="server" class="btn btn-primary dropdown-toggle" >
+                        <asp:ListItem>Hukuk</asp:ListItem>
+                        <asp:ListItem>Mühendislik</asp:ListItem>
+                        <asp:ListItem>Fen Edebiyat</asp:ListItem>
+                        <asp:ListItem>İktisadi ve İdari Bilimler</asp:ListItem>
+                        <asp:ListItem>Sanat ve Tasarım</asp:ListItem>
+                        <asp:ListItem>Mimarlık</asp:ListItem>
+                        <asp:ListItem>Eğitim</asp:ListItem>
+                        <asp:ListItem>İşletmecilik</asp:ListItem>
+                        <asp:ListItem>Teknik Bilimler</asp:ListItem>
+                        <asp:ListItem>Adalet</asp:ListItem>
+                    </asp:DropDownList>
+                        <br />
 
-             Goz Rengi:<br />
-         <asp:DropDownList ID="gozRengi" runat="server">
-              <asp:ListItem>Kahve</asp:ListItem>
-             <asp:ListItem>Mavi</asp:ListItem>
-             <asp:ListItem>Yesil</asp:ListItem>
-             <asp:ListItem>Siyah</asp:ListItem>
-         </asp:DropDownList><br /><br />
+    <div class="form-group">
+        <asp:Label ID="Label9" runat="server" Font-Size="18px" ForeColor="Black" Text="Saç Tipi"></asp:Label>
+                            <br />
+
+                            <asp:Label ID="lblhairType" runat="server" Font-Size="18px" ForeColor="White" Text="Saç Tipi" style="font-size: 18px"></asp:Label>
+                            <br />
+                        <asp:DropDownList ID="ddlHairType" runat="server" class="btn btn-primary dropdown-toggle">
+                        <asp:ListItem>Düz</asp:ListItem>
+                        <asp:ListItem>Dalgalı</asp:ListItem>
+                        <asp:ListItem>Kıvırcık</asp:ListItem>
+                    </asp:DropDownList></div>
+                        <br />
+
+    <div class="form-group">
+                            <asp:Label ID="Label10" runat="server" Font-Size="18px" ForeColor="Black" Text="Saç Rengi" style="font-size: 18px"></asp:Label>
+                            <br />
+                                <asp:DropDownList ID="ddlHairColor" runat="server" class="btn btn-primary dropdown-toggle">
+                        <asp:ListItem>Siyah</asp:ListItem>
+                        <asp:ListItem>Kahverengi</asp:ListItem>
+                        <asp:ListItem>Sarı</asp:ListItem>
+                        <asp:ListItem>Kırmızı</asp:ListItem>
+                        <asp:ListItem>Turuncu</asp:ListItem>
+                        <asp:ListItem>Gri</asp:ListItem>
+                    </asp:DropDownList>
+							</div>
+                        <br />
+
+    <asp:Label ID="lblEyeColor" runat="server" Font-Size="18px" ForeColor="Black" Text="Göz Rengi" style="font-size: 18px"></asp:Label>
+                        <div class="dropdown">
+                        <asp:DropDownList ID="ddlEyeColor" runat="server"  class="btn btn-primary dropdown-toggle">
+                        <asp:ListItem>Kahverengi</asp:ListItem>
+                        <asp:ListItem>Ela</asp:ListItem>
+                        <asp:ListItem>Mavi</asp:ListItem>
+                        <asp:ListItem>Yeşil</asp:ListItem>
+                    </asp:DropDownList></div>
+                        <br />
+
+    
+    
+    
+    <br /><br />
 
 <%--         Boyu:<br />
          <asp:DropDownList ID="Boy" runat="server">
@@ -116,7 +153,7 @@
     <asp:Label ID="Label6" runat="server" Text=""></asp:Label>
     <asp:Label ID="Label7" runat="server" Text=""></asp:Label>
     
-        <asp:GridView ID="GridView1" CssClass="table table-hover table-striped" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False">
+        <asp:GridView ID="GridView1" CssClass="table table-hover table-striped" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" style="margin-top: 0px">
             <Columns>
                 <asp:ImageField HeaderText="Resim" DataImageUrlField="" ControlStyle-Height="60px" ControlStyle-Width="60px">
 <ControlStyle Height="60px" Width="60px"></ControlStyle>
@@ -125,6 +162,7 @@
                 <asp:BoundField DataField="surname" HeaderText="Soyisim" SortExpression="surname" />
                 <asp:HyperLinkField Text="Profile Git" />
                 <asp:HyperLinkField NavigateUrl="~/YerBildirim.aspx" Text="Uye Nerede ?" />
+                <asp:HyperLinkField Text="Profile GO" />
             </Columns>
         </asp:GridView>        
                     <asp:GridView ID="GridView2" CssClass="table table-hover table-striped" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource2">
