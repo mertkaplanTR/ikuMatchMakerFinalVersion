@@ -26,6 +26,7 @@ public partial class giris : System.Web.UI.Page
     }
     protected void girisButonu_Click(object sender, EventArgs e)
     {
+        
         SqlCommand cmd = new SqlCommand();
         cmd.Connection = con;
         cmd.CommandType = CommandType.StoredProcedure;

@@ -31,17 +31,17 @@ public partial class detayliAramaSonucu : System.Web.UI.Page
         con.Open();
         //SECURILEY SOLVED THIS  
 
-        string sql = "SELECT [name] FROM [MatchMaker].[user].[Info] where userID=@userID";
+        string sql = "SELECT [name] FROM [user].[Info] where userID=@userID";
         SqlCommand getName = new SqlCommand(sql, con);
         getName.Parameters.AddWithValue("userID", sonuc.Text);
         isim.Text = getName.ExecuteScalar().ToString();
 
-        string sql2 = "SELECT [surname] FROM [MatchMaker].[user].[Info] where userID=@userID";
+        string sql2 = "SELECT [surname] FROM [user].[Info] where userID=@userID";
         SqlCommand getSurname = new SqlCommand(sql2, con);
         getSurname.Parameters.AddWithValue("userID", sonuc.Text);
         soyadi.Text = getSurname.ExecuteScalar().ToString();
 
-        string sql3 = "SELECT [mailAddress] FROM [MatchMaker].[user].[Info] where userID=@userID";
+        string sql3 = "SELECT [mailAddress] FROM [user].[Info] where userID=@userID";
         SqlCommand getEmail = new SqlCommand(sql3, con);
         getEmail.Parameters.AddWithValue("userID", sonuc.Text);
         email.Text = getEmail.ExecuteScalar().ToString();
@@ -73,7 +73,7 @@ public partial class detayliAramaSonucu : System.Web.UI.Page
         DataTable dtPersons = new DataTable();
 
         SqlDataAdapter adapter = new SqlDataAdapter();
-        adapter.SelectCommand = new SqlCommand("select u.profilePicture,u.name,u.surname from [user].Info as u where sex=@sex and campus=@campus and department=@dep and hairType=@hair and hairColor=@hairC and eyeColor=@eyeC", con);
+        adapter.SelectCommand = new SqlCommand("select u.profilePicture,u.name,u.surname,u.userID from [user].Info as u where sex=@sex and campus=@campus and department=@dep and hairType=@hair and hairColor=@hairC and eyeColor=@eyeC", con);
         adapter.SelectCommand.Parameters.Add("sex", chkSex);
         adapter.SelectCommand.Parameters.Add("campus", chkCampus);
         adapter.SelectCommand.Parameters.Add("dep", chkDep);
@@ -88,4 +88,12 @@ public partial class detayliAramaSonucu : System.Web.UI.Page
 
     }
 
+
+    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        
+        Session["secilenUserID"] = GridView1.SelectedRow.Cells[4].Text;
+        
+        Response.Redirect("uyeProfil.aspx");
+    }
 }

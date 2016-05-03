@@ -71,7 +71,7 @@ public partial class Kayıt2Sayfa : System.Web.UI.Page
         cmd.Parameters.Add(new SqlParameter("@shortInfo", shortInfo));
         cmd.Parameters.Add(new SqlParameter("@hairType", hairType));
         cmd.Parameters.Add(new SqlParameter("@hairColor", hairColor));
-        //cmd.Parameters.Add(new SqlParameter("@eyeColor", eyeColor));
+        cmd.Parameters.Add(new SqlParameter("@eyeColor", eyeColor));
         cmd.Parameters.Add(new SqlParameter("@height", height));
         cmd.Parameters.Add(new SqlParameter("@weight", weight));
         cmd.Parameters.Add(new SqlParameter("@place", place));

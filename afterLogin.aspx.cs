@@ -10,6 +10,7 @@ using System.Configuration;
 
 public partial class afterLogin : System.Web.UI.Page
 {
+    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString);
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -97,5 +98,4 @@ public partial class afterLogin : System.Web.UI.Page
     }
 
 
-    
 }

@@ -28,17 +28,17 @@ public partial class begenenKisiler : System.Web.UI.Page
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString); // sonrada neklendi. 
         con.Open();
         //query gunccelenecek sadece
-        string sql = "SELECT [name] FROM [MatchMaker].[user].[Info] where userID=@userID";
+        string sql = "SELECT [name] FROM [user].[Info] where userID=@userID";
         SqlCommand getName = new SqlCommand(sql, con);
         getName.Parameters.AddWithValue("userID", sonuc.Text);
         //begenenKisiAdi.Text = getName.ExecuteScalar().ToString();
 
-        string sql2 = "select campus FROM [MatchMaker].[user].[Info] where userID=@userID";
+        string sql2 = "select campus FROM [user].[Info] where userID=@userID";
         SqlCommand getCampus = new SqlCommand(sql2, con);
         getCampus.Parameters.AddWithValue("userID", sonuc.Text);
         //campus.Text = getCampus.ExecuteScalar().ToString();
 
-        string sql3 = "select department FROM [MatchMaker].[user].[Info] where userID=@userID";
+        string sql3 = "select department FROM [user].[Info] where userID=@userID";
         SqlCommand getDepartment = new SqlCommand(sql3, con);
         getDepartment.Parameters.AddWithValue("userID", sonuc.Text);
         //department.Text = getDepartment.ExecuteScalar().ToString();

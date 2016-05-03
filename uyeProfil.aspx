@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="afterLogin.aspx.cs" Inherits="afterLogin" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="uyeProfil.aspx.cs" Inherits="uyeProfil" %>
 
 <!DOCTYPE html>
 
@@ -62,8 +62,8 @@
 	<div class="container">
 		<div class="text-center">
 			<h2 class="wow fadeInCenter">Profil Bilgilerim</h2>
-			<div class="title-line wow fadeInCenter">Yeni mesaj: <asp:Literal ID="sonuc" runat="server"></asp:Literal>
-			<div class="title-line wow fadeInCenter">Yeni bildirim:<asp:HyperLink ID="sonuc2" runat="server" NavigateUrl="~/bildirimler.aspx"></asp:HyperLink>
+
+			<div class="title-line wow fadeInCenter">Uye Profil ID:<asp:HyperLink ID="sonuc2" runat="server" NavigateUrl="#"></asp:HyperLink>
             </div>
 		</div>
 
@@ -139,99 +139,24 @@
        
 
 
-         
-         
+
+        <asp:Button ID="btnBegen" runat="server" Text="Profili Beğen" OnClick="btnBegen_Click" />
     
-                
-                
-          
-
-
-               
-			
-
-           
-            </div> <!---------------------------------- 222222'LUK KOLONUN BITISI----------------->
-
-
-			<!---------------------------------- 1000000'LUK KOLONUN BASLANGICI----------------->
-			<div class="col-sm-10">
-			 <div class="price-box wow fadeInUp">
-
-                 <div class="price-heading text-center">
-                    <h3>Begenilenler: <asp:HyperLink ID="likedNumber" runat="server" NavigateUrl="~/begenilenKisiler.aspx"></asp:HyperLink>&emsp;&emsp;  
-                    Begenenler: <asp:HyperLink ID="likerNumber" runat="server"  NavigateUrl="~/begenenKisiler.aspx"></asp:HyperLink></h3>
-                     </div>
-                 <div class="testi-item">
-						<div class="client-pic text-left">
-						
-							<!-- /.client photo -->
-							<center>
-                                <img src="images/adembavas.jpg" alt="client"><br /><br />
-                           <asp:Label ID="Label1" runat="server" Text="Adiniz: "></asp:Label>
-                               <asp:Literal ID="isim" runat="server"></asp:Literal>
-                            <asp:Label ID="soyadi" runat="server"></asp:Label>&emsp;&emsp;
-			               <asp:Label ID="Label2" runat="server" Text="Mail Adresiniz: "></asp:Label><asp:Label ID="email" runat="server"></asp:Label>            
-                              </center>
-                         </div>     
-		</div>
-	    <div class="row screenshots"> <center>
-            <h3>Fotograflarım:</h3></center>
-             <br />
-                <asp:GridView ID="GridView1" runat="server" DataSourceID="photosDS">
-                    <Columns>
-                        <asp:CommandField ShowDeleteButton="True" />
-                        <asp:ImageField DataImageUrlField="path" HeaderText="Resim">
-                        </asp:ImageField>
-                    </Columns>
-            </asp:GridView>
-            <asp:SqlDataSource ID="photosDS" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:dbconnection %>" DeleteCommand="DELETE FROM [Picture] WHERE [pictureID] = @original_pictureID AND [path] = @original_path AND [userID] = @original_userID" InsertCommand="INSERT INTO [Picture] ([path], [userID]) VALUES (@path, @userID)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Picture] WHERE ([userID] = @userID)" UpdateCommand="UPDATE [Picture] SET [path] = @path, [userID] = @userID WHERE [pictureID] = @original_pictureID AND [path] = @original_path AND [userID] = @original_userID">
-                <DeleteParameters>
-                    <asp:Parameter Name="original_pictureID" Type="Int32" />
-                    <asp:Parameter Name="original_path" Type="String" />
-                    <asp:Parameter Name="original_userID" Type="Int32" />
-                </DeleteParameters>
-                <InsertParameters>
-                    <asp:Parameter Name="path" Type="String" />
-                    <asp:Parameter Name="userID" Type="Int32" />
-                </InsertParameters>
-                <SelectParameters>
-                    <asp:SessionParameter Name="userID" SessionField="isim" Type="Int32" />
-                </SelectParameters>
-                <UpdateParameters>
-                    <asp:Parameter Name="path" Type="String" />
-                    <asp:Parameter Name="userID" Type="Int32" />
-                    <asp:Parameter Name="original_pictureID" Type="Int32" />
-                    <asp:Parameter Name="original_path" Type="String" />
-                    <asp:Parameter Name="original_userID" Type="Int32" />
-                </UpdateParameters>
-            </asp:SqlDataSource>
-                <br />
-			<div id="screenshots" class="owl-carousel">
-				<!-- /.screenshot images -->
-				<%-- ESKİ STATİC RESİMLER
-                    
-                    <div class="screen wow fadeInUp">
-					<a href="images/aa.jpg" data-toggle="lightbox"><img src="images/aa.jpg" alt="Screenshot"></a>
-				</div>
-				
-				<div class="screen wow fadeInUp" data-wow-delay="0.1s">
-					<a href="images/adembavas.jpg" data-toggle="lightbox"><img src="images/adembavas.jpg" alt="Screenshot"></a>
-				</div>
-				
-				<div class="screen wow fadeInUp" data-wow-delay="0.2s">
-					<a href="images/aa.jpg" data-toggle="lightbox"><img src="images/aa.jpg" alt="Screenshot"></a>
-				</div>
-				
-				<div class="screen wow fadeInUp" data-wow-delay="0.3s">
-					<a href="images/aa.jpg" data-toggle="lightbox"><img src="images/aa.jpg" alt="Screenshot"></a>
-				</div>
-				--%>
-                
-
 			
 			</div>
-		</div>
+            <asp:Label ID="sonuc" runat="server" Text=""></asp:Label>
+            <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSource1">
+                <Columns>
+                    <asp:ImageField DataImageUrlField="path">
+                    </asp:ImageField>
+                </Columns>
+            </asp:GridView>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:dbconnection %>" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT [path] FROM [system].[Picture] WHERE ([userID] = @userID)">
+                <SelectParameters>
+                    <asp:SessionParameter Name="userID" SessionField="secilenUserID" Type="Int32" />
+                </SelectParameters>
+            </asp:SqlDataSource>
+        </div>
              </div>
 		</div>     
 	</div>

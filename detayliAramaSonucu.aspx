@@ -153,16 +153,15 @@
     <asp:Label ID="Label6" runat="server" Text=""></asp:Label>
     <asp:Label ID="Label7" runat="server" Text=""></asp:Label>
     
-        <asp:GridView ID="GridView1" CssClass="table table-hover table-striped" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" style="margin-top: 0px">
+        <asp:GridView ID="GridView1" CssClass="table table-hover table-striped" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" style="margin-top: 0px" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
             <Columns>
                 <asp:ImageField HeaderText="Resim" DataImageUrlField="" ControlStyle-Height="60px" ControlStyle-Width="60px">
 <ControlStyle Height="60px" Width="60px"></ControlStyle>
                 </asp:ImageField>
+                <asp:CommandField ShowSelectButton="True" />
                 <asp:BoundField DataField="name" HeaderText="İsim" SortExpression="name" />
                 <asp:BoundField DataField="surname" HeaderText="Soyisim" SortExpression="surname" />
-                <asp:HyperLinkField Text="Profile Git" />
-                <asp:HyperLinkField NavigateUrl="~/YerBildirim.aspx" Text="Uye Nerede ?" />
-                <asp:HyperLinkField Text="Profile GO" />
+                <asp:BoundField DataField="userID" HeaderText="userID" SortExpression="userID" />
             </Columns>
         </asp:GridView>        
                     <asp:GridView ID="GridView2" CssClass="table table-hover table-striped" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource2">

@@ -44,7 +44,7 @@
 
                     <!-- /.main title -->
                     <h2 class="wow fadeInUp" style="margin-bottom: 50px">
-                        GIRIS YAP | UYE OL
+                        GIRIS YAP | SIFRE SIFIRLA
                     </h2>
 
                 </div>
@@ -64,6 +64,7 @@
                         </div>
                         <div class="form-group">
                             <asp:TextBox ID="password" runat="server" CssClass="form-control input-lg" type="password" placeholder="Sifreniz" required></asp:TextBox>
+
                         </div>
                         <div class="form-group last">
                             <asp:Button ID="girisButonu" runat="server" Text="Giris Yap" cssClass="btn btn-primary btn-block btn-lg"  OnClick="girisButonu_Click" />

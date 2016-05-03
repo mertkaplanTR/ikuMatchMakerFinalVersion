@@ -13,10 +13,10 @@ using System.Web.UI.WebControls;
 public partial class bilgiguncelle : System.Web.UI.Page
 {
     SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString);
-
+    
     DataAccess _dataAccess;
     public int UserID;
-
+    
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -32,9 +32,11 @@ public partial class bilgiguncelle : System.Web.UI.Page
         if (!Page.IsPostBack)
         {
             fillData();
-            fillPhotos();
+
         }
-        
+
+
+
     }
     public void fillPhotos()
     {
@@ -84,16 +86,20 @@ public partial class bilgiguncelle : System.Web.UI.Page
 
     protected void btnUpload_Click(object sender, EventArgs e)
     {
+        if (fuImages.HasFile) {
 
-        IList<HttpPostedFile> Images = fuImages.PostedFiles;
-        for (int i = 0; i < Images.Count; i++)
-        {
-            fuImages.PostedFiles[i].SaveAs(Server.MapPath("~/resim/") + fuImages.PostedFiles[i].FileName);
-        }
+            string extension = Path.GetExtension(fuImages.FileName);
+            if(extension.ToLower() == ".jpg" || extension.ToLower() == ".png" || extension.ToLower() == ".bmp") { 
+
+            IList<HttpPostedFile> Images = fuImages.PostedFiles;
+                for (int i = 0; i < Images.Count; i++)
+                    {
+                        fuImages.PostedFiles[i].SaveAs(Server.MapPath("~/resim/") + fuImages.PostedFiles[i].FileName);
+                    }
 
         
-        for (int i = 0; i < Images.Count; i++)
-        {
+                    for (int i = 0; i < Images.Count; i++)
+                        {
             string path = Images[i].FileName;
 
             SqlCommand cmd = new SqlCommand("insert into [system].[Picture] ([path],[userID]) values ('~/resim/'+@path,@userID)", con);
@@ -103,35 +109,33 @@ public partial class bilgiguncelle : System.Web.UI.Page
             con.Open();
             cmd.ExecuteNonQuery();
             con.Close();
+            lblExtension.Text = "Resim Yükleme Başarılı";
+                        }
+            }
+            else
+            {
+                lblExtension.Text = "Sadece jpg,png ve bmp dosyaları yükleyebilirsin";
+
+            }
         }
+        Response.Redirect(Request.RawUrl); //Resimlerin refresh yapılmadan otomatik grid'e yüklenmesi için
+    }
 
-        //uzantı kontrolü
-        //if (fuImages.HasFile)
-        //{
-        //    string extension = Path.GetExtension(fuImages.FileName);
-        //    if (extension.ToLower() == ".jpg" || extension.ToLower() == ".png" || extension.ToLower() == ".bmp")
-        //    {
-        //        SqlCommand cmd = new SqlCommand("select[path] from[system].Picture where[userID] = @userID", con);
-        //        cmd.Parameters.AddWithValue("@userID", UserID);
-        //        con.Open();
-        //        cmd.ExecuteNonQuery();
-        //        SqlDataReader rdr = cmd.ExecuteReader();
-        //        gvPhotos.DataSource = rdr;
-        //        gvPhotos.DataBind();
-        //        con.Close();
+    protected void btnDeletePhoto_Click(object sender, EventArgs e)
+    {
 
-
-        //    }
-
-
-        //}
-
-
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString);
+        con.Open();
+        string sql = "SELECT distinct [path] FROM [system].[Picture] where [userID] = @userID";
+        SqlCommand cmd = new SqlCommand();
+        cmd.Parameters.AddWithValue("userID", sonuc.Text);
+        System.IO.File.Delete(sql);
 
     }
 
     protected void btnUpdateInfo_Click(object sender, EventArgs e)
     {
+
 
         string MailAddress = txtMailAddress.Text;
         string Password = txtPassword.Text;
@@ -202,4 +206,9 @@ public partial class bilgiguncelle : System.Web.UI.Page
     protected void ddlDepartment_SelectedIndexChanged(object sender, EventArgs e)    {    }
 
     protected void ddlCampus_SelectedIndexChanged(object sender, EventArgs e)    {    }
+
+    protected void gvPhotos_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }

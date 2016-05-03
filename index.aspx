@@ -83,6 +83,9 @@
                             <div class="form-group">
                                 <asp:TextBox ID="sifresi" runat="server" CssClass="form-control input-lg" required placeholder="Sifre" type="password"></asp:TextBox>
                             </div>
+                        <div class="form-group">
+                                <asp:TextBox ID="sifreTekrar" runat="server" CssClass="form-control input-lg" required placeholder="Sifre Tekrar" type="password"></asp:TextBox>
+                            </div>
 
 							<div class="form-group last">
                                 <asp:Button ID="kaydolButon" runat="server" class="btn btn-warning btn-block btn-lg" text="KAYDOL" OnClick="kaydolButon_Click" />

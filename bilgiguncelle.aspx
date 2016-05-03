@@ -211,19 +211,37 @@
                         <asp:Button ID="btnUpload" runat="server" Text="Yükle" OnClick="btnUpload_Click"/>
                         <br />
                         <br />
-                        <asp:GridView ID="gvPhotos" runat="server" AutoGenerateColumns="False" DataKeyNames="pictureID" DataSourceID="SqlDataSource1" Width="250px" Height="100">
+                        <br />
+                        <asp:Label ID="lblExtension" runat="server" Font-Bold="True" Font-Size="14pt" ForeColor="White"></asp:Label>
+                        <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSource1">
                             <Columns>
-                                <asp:BoundField DataField="pictureID" HeaderText="pictureID" InsertVisible="False" ReadOnly="True" SortExpression="pictureID" />
-                                <asp:BoundField DataField="path" HeaderText="path" SortExpression="path" />
-                                <asp:ImageField DataImageUrlField="path" HeaderText="Resim" ControlStyle-Height =" 150" ControlStyle-Width="300">
+                                <asp:CommandField ShowDeleteButton="True" />
+                                <asp:ImageField DataImageUrlField="path" HeaderText="Resim">
                                 </asp:ImageField>
                             </Columns>
                         </asp:GridView>
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:dbconnection %>" SelectCommand="SELECT [pictureID], [path] FROM [system].[Picture] WHERE ([userID] = @userID)">
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:dbconnection %>" DeleteCommand="DELETE FROM [system].[Picture] WHERE [pictureID] = @original_pictureID AND [path] = @original_path AND [userID] = @original_userID" InsertCommand="INSERT INTO [system].[Picture] ([path], [userID]) VALUES (@path, @userID)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [system].[Picture] WHERE ([userID] = @userID)" UpdateCommand="UPDATE [system].[Picture] SET [path] = @path, [userID] = @userID WHERE [pictureID] = @original_pictureID AND [path] = @original_path AND [userID] = @original_userID">
+                            <DeleteParameters>
+                                <asp:Parameter Name="original_pictureID" Type="Int32" />
+                                <asp:Parameter Name="original_path" Type="String" />
+                                <asp:Parameter Name="original_userID" Type="Int32" />
+                            </DeleteParameters>
+                            <InsertParameters>
+                                <asp:Parameter Name="path" Type="String" />
+                                <asp:Parameter Name="userID" Type="Int32" />
+                            </InsertParameters>
                             <SelectParameters>
-                                <asp:SessionParameter Name="userID" SessionField="isim" />
+                                <asp:SessionParameter Name="userID" SessionField="isim" Type="Int32" />
                             </SelectParameters>
+                            <UpdateParameters>
+                                <asp:Parameter Name="path" Type="String" />
+                                <asp:Parameter Name="userID" Type="Int32" />
+                                <asp:Parameter Name="original_pictureID" Type="Int32" />
+                                <asp:Parameter Name="original_path" Type="String" />
+                                <asp:Parameter Name="original_userID" Type="Int32" />
+                            </UpdateParameters>
                         </asp:SqlDataSource>
+                        <br />
                         <br />
                         <asp:Label ID="lblSmokingHabit" runat="server" Font-Size="18px" ForeColor="White" Text="Sigara Alışkanlığı" style="font-size: 18px"></asp:Label>
                         <div class="dropdown">
@@ -233,6 +251,7 @@
                         <asp:ListItem Value="Sosyal İçiçi">Sosyal İçiçi</asp:ListItem>
                     </asp:DropDownList></div>
                         <br />
+
                         <br />
                         <br />
                         <br />
