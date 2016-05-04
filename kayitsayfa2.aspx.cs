@@ -40,7 +40,7 @@ public partial class Kayıt2Sayfa : System.Web.UI.Page
         DataTable dtUser = new DataTable();
         con.Open();
         string sex = ddlSex.SelectedItem.ToString();
-        string birthday = txtBirthday.Text;
+        //string birthday = txtBirthday.Text; Stringe çevirmede sorun olduğu için kaldırdık
         string phone = txtPhone.Text;
         string facebook = txtFacebook.Text;
         string twitter = txtTwitter.Text;

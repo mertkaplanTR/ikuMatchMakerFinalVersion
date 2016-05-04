@@ -27,7 +27,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <body data-spy="scroll" data-target="#navbar-scroll">
+       
 
 <!-- /.preloader -->
 <div id="preloader"></div>
@@ -84,7 +84,7 @@
                                 <asp:TextBox ID="sifresi" runat="server" CssClass="form-control input-lg" required placeholder="Sifre" type="password"></asp:TextBox>
                             </div>
                         <div class="form-group">
-                                <asp:TextBox ID="sifreTekrar" runat="server" CssClass="form-control input-lg" required placeholder="Sifre Tekrar" type="password"></asp:TextBox>
+                                <asp:TextBox ID="sifreTekrar" runat="server" CssClass="form-control input-lg"  placeholder="Sifre Tekrar" type="password" ></asp:TextBox>
                             </div>
 
 							<div class="form-group last">
@@ -129,7 +129,7 @@
 	<script>
 		new WOW().init();
 	</script>
-  </body>
+
     </form>
 </body>
 </html>

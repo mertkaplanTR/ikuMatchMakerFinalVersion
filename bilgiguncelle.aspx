@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="bilgiguncelle.aspx.cs" Inherits="bilgiguncelle" %>
 
-<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="ajaxToolkit" %>
+
 
 <!DOCTYPE html>
 
@@ -108,19 +108,19 @@
                                 <br />
 							</div>
                             <div class="form-group">
-                                <asp:TextBox ID="txtPhone" runat="server" CssClass="form-control input-lg" required placeHolder="Telefon Numarası" type="text" TextMode="Phone"></asp:TextBox>   
+                                <asp:TextBox ID="txtPhone" runat="server" CssClass="form-control input-lg"  placeHolder="Telefon Numarası" type="text" TextMode="Phone"></asp:TextBox>   
 							</div>
                             <div class="form-group">
-                                <asp:TextBox ID="txtFacebook" runat="server" CssClass="form-control input-lg" required placeHolder="Facebook Profili" type="text"></asp:TextBox>   
+                                <asp:TextBox ID="txtFacebook" runat="server" CssClass="form-control input-lg"  placeHolder="Facebook Profili" type="text"></asp:TextBox>   
 							</div>
                             <div class="form-group">
-                                <asp:TextBox ID="txtTwitter" runat="server" CssClass="form-control input-lg" required placeHolder="Twitter Profili" type="text"></asp:TextBox>   
+                                <asp:TextBox ID="txtTwitter" runat="server" CssClass="form-control input-lg"  placeHolder="Twitter Profili" type="text"></asp:TextBox>   
 							</div>
                             <div class="form-group">
-                                <asp:TextBox ID="txtInstagram" runat="server" CssClass="form-control input-lg" required placeHolder="İnstagram Profili" type="text"></asp:TextBox>   
+                                <asp:TextBox ID="txtInstagram" runat="server" CssClass="form-control input-lg"  placeHolder="İnstagram Profili" type="text"></asp:TextBox>   
 							</div>
                             <div class="form-group">
-                                <asp:TextBox ID="txtSnapchat" runat="server" CssClass="form-control input-lg" required placeHolder="Snapchat Profili" type="text"></asp:TextBox>  
+                                <asp:TextBox ID="txtSnapchat" runat="server" CssClass="form-control input-lg"  placeHolder="Snapchat Profili" type="text"></asp:TextBox>  
                                 </div> 
 
 <%--                         <div class="dropdown">
@@ -195,7 +195,7 @@
                                 <asp:Label ID="lblWeight" runat="server" Text="Çok ince olduğuna eminiz. Ancak ağırlık negatif olamaz :)" Visible="False"></asp:Label>
 							</div>
 							<div class="form-group">
-                                <asp:TextBox ID="txtPlace" runat="server" CssClass="form-control input-lg" required placeholder="Yaşadığınız Yer" type="text"></asp:TextBox>
+                                <asp:TextBox ID="txtPlace" runat="server" CssClass="form-control input-lg"  placeholder="Yaşadığınız Yer" type="text"></asp:TextBox>
 							</div>
 
                         
@@ -216,7 +216,7 @@
                         <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSource1">
                             <Columns>
                                 <asp:CommandField ShowDeleteButton="True" />
-                                <asp:ImageField DataImageUrlField="path" HeaderText="Resim">
+                                <asp:ImageField DataImageUrlField="path" HeaderText="Resim" ControlStyle-Height =" 150" ControlStyle-Width="300">
                                 </asp:ImageField>
                             </Columns>
                         </asp:GridView>

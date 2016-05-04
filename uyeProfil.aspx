@@ -145,7 +145,7 @@
 			
 			</div>
             <asp:Label ID="sonuc" runat="server" Text=""></asp:Label>
-            <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSource1">
+            <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSource1" HorizontalAlign="Center">
                 <Columns>
                     <asp:ImageField DataImageUrlField="path">
                     </asp:ImageField>

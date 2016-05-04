@@ -48,7 +48,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="index.aspx">Anasayfa</a></li>
 					<li><a href="bildirimler.aspx">Bildirimler</a></li>
-					<li><a href="mesaj.aspx">Mesajlar</a></li>
+					<li><a href="mesaj2.aspx">Mesajlar</a></li>
 					<li><a href="bilgiguncelle.aspx">Ayarlar</a></li>
 					<li><a href="cikis.aspx">Çıkış</a></li>
 					
@@ -80,14 +80,15 @@
   
             <ul id="menu-content" class="menu-content collapse out">
                 <li>
-                  <a href="#">
-                  <i class="fa fa-dashboard fa-lg"></i> Dashboard
+                  <a href="mesajyaz.aspx">
+                  <i class="fa fa-dashboard fa-lg"></i> Mesaj Yaz
                   </a>
                 </li>
 
-                <li  data-toggle="collapse" data-target="#products" class="collapsed active">
-                  <a href="#"><i class="fa fa-gift fa-lg"></i> UI Elements <span class="arrow"></span></a>
-                </li>
+
+
+
+            
                 <ul class="sub-menu collapse" id="products">
                     <li class="active"><a href="#">CSS3 Animation</a></li>
                     <li><a href="#">General</a></li>
@@ -102,7 +103,7 @@
                 </ul>
 
 
-                <li data-toggle="collapse" data-target="#service" class="collapsed">
+           <%--     <li data-toggle="collapse" data-target="#service" class="collapsed">
                   <a href="#"><i class="fa fa-globe fa-lg"></i> Services <span class="arrow"></span></a>
                 </li>  
                 <ul class="sub-menu collapse" id="service">
@@ -132,7 +133,7 @@
                   <a href="#">
                   <i class="fa fa-users fa-lg"></i> Users
                   </a>
-                </li>
+                </li>--%>
             </ul>
      </div>
 </div>
@@ -178,14 +179,14 @@
 	    <div class="row screenshots"> <center>
             <h3>Fotograflarım:</h3></center>
              <br />
-                <asp:GridView ID="GridView1" runat="server" DataSourceID="photosDS">
+                <asp:GridView ID="GridView1" runat="server" DataSourceID="photosDS" AllowPaging="True" GridLines="None" Height="100px" Width="250px" HorizontalAlign="Center">
                     <Columns>
                         <asp:CommandField ShowDeleteButton="True" />
-                        <asp:ImageField DataImageUrlField="path" HeaderText="Resim">
+                        <asp:ImageField DataImageUrlField="path" HeaderText="Resim" ControlStyle-Height =" 150" ControlStyle-Width="300">
                         </asp:ImageField>
                     </Columns>
             </asp:GridView>
-            <asp:SqlDataSource ID="photosDS" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:dbconnection %>" DeleteCommand="DELETE FROM [Picture] WHERE [pictureID] = @original_pictureID AND [path] = @original_path AND [userID] = @original_userID" InsertCommand="INSERT INTO [Picture] ([path], [userID]) VALUES (@path, @userID)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Picture] WHERE ([userID] = @userID)" UpdateCommand="UPDATE [Picture] SET [path] = @path, [userID] = @userID WHERE [pictureID] = @original_pictureID AND [path] = @original_path AND [userID] = @original_userID">
+            <asp:SqlDataSource ID="photosDS" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:dbconnection %>" DeleteCommand="DELETE FROM [system].[Picture] WHERE [pictureID] = @original_pictureID AND [path] = @original_path AND [userID] = @original_userID" InsertCommand="INSERT INTO [system].[Picture] ([path], [userID]) VALUES (@path, @userID)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [system].[Picture] WHERE ([userID] = @userID)" UpdateCommand="UPDATE [system].[Picture] SET [path] = @path, [userID] = @userID WHERE [pictureID] = @original_pictureID AND [path] = @original_path AND [userID] = @original_userID">
                 <DeleteParameters>
                     <asp:Parameter Name="original_pictureID" Type="Int32" />
                     <asp:Parameter Name="original_path" Type="String" />

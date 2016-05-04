@@ -89,7 +89,6 @@
 
                         <div class="form-group">
 
-                                <asp:TextBox ID="txtBirthday" runat="server" CssClass="form-control input-lg" required placeHolder="Doğum Tarihi (Gün-Ay-Yıl)" type="text" TextMode="Date"></asp:TextBox>   
 							</div>
                        <div class="form-group">
                                 <asp:TextBox ID="txtPhone" runat="server" CssClass="form-control input-lg"  placeHolder="Telefon Numarası" type="text" TextMode="Phone"></asp:TextBox>   

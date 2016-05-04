@@ -9,7 +9,7 @@ public class DataAccess
 {
     public Spec userSpec = new Spec();
     //string connectionString = "Data Source=h2yopgjbc9.database.windows.net;Initial Catalog=MatchMakerV1804;User Id=adeministrator;Password=!907fener Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
-    string connectionString = "Data Source=DESKTOP-IEDUPGS\\DEV01;Initial Catalog=MatchMaker;Integrated Security=True;Encrypt=False;TrustServerCertificate=False";
+    string connectionString = "Data Source=DESKTOP-IEDUPGS\\DEV01;Initial Catalog=MatchMaker;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
     SqlConnection connection;
 
     public DataAccess()
